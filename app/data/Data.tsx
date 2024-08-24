@@ -1,6 +1,6 @@
 // Data.tsx
 
-import { IconBrandLinkedin, IconBrandX, IconMail, IconBrandGithub } from "@tabler/icons-react";
+import { IconBrandLinkedin, IconBrandX, IconMail, IconBrandGithub,IconHome,IconFileText} from "@tabler/icons-react";
 import React from "react";
 
 // Define an interface for type-checking
@@ -19,6 +19,11 @@ export const Data: UserData = {
   // Icons data
   icons: [
     {
+      title: "Home",
+      icon: <IconHome size={24} />,
+      href: "https://www.linkedin.com/in/mohdsahilsiddiqui",
+    },
+    {
       title: "LinkedIn",
       icon: <IconBrandLinkedin size={24} />,
       href: "https://www.linkedin.com/in/mohdsahilsiddiqui",
@@ -36,6 +41,11 @@ export const Data: UserData = {
     {
       title: "GitHub",
       icon: <IconBrandGithub size={24} />,
+      href: "https://www.github.com/yourusername",
+    },
+    {
+      title: "Resume",
+      icon: <IconFileText size={24} />,
       href: "https://www.github.com/yourusername",
     },
   ],
