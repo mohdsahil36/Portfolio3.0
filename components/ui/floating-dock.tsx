@@ -27,7 +27,7 @@ export const FloatingDock = ({
   return (
     <FloatingDockDesktop
       items={items}
-      className={cn(desktopClassName, mobileClassName)}
+      className={cn("w-max p-4 rounded-full border z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-5 bg-background", desktopClassName)}
       themeToggler={themeToggler}
     />
   );
@@ -55,7 +55,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto flex h-16 gap-4 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
+        "flex h-16 gap-4 items-end rounded-2xl px-4 pb-3",
         className
       )}
     >
@@ -68,16 +68,14 @@ const FloatingDockDesktop = ({
         />
       ))}
 
-      {/* Render theme toggler with click handler */}
-      <motion.div
-        style={{ width: 40, height: 40 }} // Adjust size as needed
-        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
-        onMouseEnter={() => mouseX.set(Infinity)} // Prevent hover effect on theme toggler
-        onMouseLeave={() => mouseX.set(Infinity)} // Prevent hover effect on theme toggler
-        onClick={handleThemeToggle} // Handle click to toggle theme
-      >
-        {themeToggler}
-      </motion.div>
+      {/* Render theme toggler with hover effect */}
+      <IconContainer
+        mouseX={mouseX}
+        title="Toggle Theme"
+        icon={themeToggler}
+        href="#" // href is not used here; handled with onClick
+        onClick={handleThemeToggle}
+      />
     </motion.div>
   );
 };
@@ -87,11 +85,13 @@ function IconContainer({
   title,
   icon,
   href,
+  onClick,
 }: {
   mouseX: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  onClick?: () => void;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -100,11 +100,11 @@ function IconContainer({
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [40, 80, 40]);
+  let widthTransform = useTransform(distance, [-150, 0, 150], [32, 80, 32]);
+  let heightTransform = useTransform(distance, [-150, 0, 150], [32, 80, 32]);
 
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
-  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [20, 40, 20]);
+  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [16, 40, 16]);
+  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [16, 40, 16]);
 
   let width = useSpring(widthTransform, {
     mass: 0.1,
@@ -133,7 +133,8 @@ function IconContainer({
   return (
     <Link
       href={href}
-      target="_blank" // Open link in a new tab
+      onClick={onClick}
+      target={onClick ? "_self" : "_blank"} // Open link in the same tab if onClick is provided
       rel="noopener noreferrer"
       style={{ textDecoration: 'none' }} // Optional: remove underline from links
     >
