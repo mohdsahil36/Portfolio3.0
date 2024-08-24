@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export const FloatingDock = ({
   return (
     <FloatingDockDesktop
       items={items}
-      className={cn("w-max p-4 rounded-full border z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-5 bg-background", desktopClassName)}
+      className={cn("w-max p-4 rounded-full border z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-6 bg-background overflow-hidden", desktopClassName)}
       themeToggler={themeToggler}
     />
   );
@@ -43,7 +43,6 @@ const FloatingDockDesktop = ({
   themeToggler: React.ReactNode;
 }) => {
   let mouseX = useMotionValue(Infinity);
-
   const { theme, setTheme } = useTheme();
 
   const handleThemeToggle = () => {
@@ -58,6 +57,7 @@ const FloatingDockDesktop = ({
         "flex h-16 gap-4 items-end rounded-2xl px-4 pb-3",
         className
       )}
+      style={{ overflow: 'hidden' }} // Prevent overflow
     >
       {/* Render icons */}
       {items.map((item) => (
@@ -100,11 +100,11 @@ function IconContainer({
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [32, 80, 32]);
-  let heightTransform = useTransform(distance, [-150, 0, 150], [32, 80, 32]);
+  let widthTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]); // Adjusted bounds
+  let heightTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]); // Adjusted bounds
 
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [16, 40, 16]);
-  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [16, 40, 16]);
+  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [16, 30, 16]); // Adjusted bounds
+  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [16, 30, 16]); // Adjusted bounds
 
   let width = useSpring(widthTransform, {
     mass: 0.1,
@@ -143,7 +143,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
+        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative overflow-hidden"
       >
         <AnimatePresence>
           {hovered && (
