@@ -26,27 +26,27 @@ export const Data: UserData = {
     {
       title: "LinkedIn",
       icon: <IconBrandLinkedin size={24} />,
-      href: "https://www.linkedin.com/in/mohdsahilsiddiqui",
+      href: "https://www.linkedin.com/in/mohd-sahil-siddiqui-021a11201/",
     },
     {
       title: "X",
       icon: <IconBrandX size={24} />,
-      href: "https://www.twitter.com/yourusername",
+      href: "https://x.com/LuciFeR8382",
     },
     {
       title: "Email",
       icon: <IconMail size={24} />,
-      href: "mailto:sahil@example.com",
+      href: "mailto:mohdsahilsiddiqui36@gmail.com",
     },
     {
       title: "GitHub",
       icon: <IconBrandGithub size={24} />,
-      href: "https://www.github.com/yourusername",
+      href: "https://github.com/mohdsahil36?tab=overview&from=2024-08-01&to=2024-08-24",
     },
     {
       title: "Resume",
       icon: <IconFileText size={24} />,
-      href: "https://www.github.com/yourusername",
+      href: "https://drive.google.com/file/d/1X7dvLlSSXNwVd9YrRTydU42cCbeUGp0x/view?usp=drive_link",
     },
   ],
 };
