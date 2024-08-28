@@ -9,7 +9,7 @@ const Introduction: React.FC<IntroductionProps> = ({ name, intro }) => {
     return (
         <section>
             <div className='salutations font-bold text-3xl md:text-5xl'>
-                <p>Hi, My name is {name}</p>
+                <p>Hi, I'm {name}</p>
             </div>
             <div className='mini-intro mt-3.5 text-sm md:text-lg'>
                 <p>{intro}</p>
