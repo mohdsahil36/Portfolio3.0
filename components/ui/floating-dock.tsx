@@ -1,7 +1,6 @@
-"use client";
-
+"use client"
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
   AnimatePresence,
   MotionValue,
@@ -10,6 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import Link from "next/link";
 import { useRef, useState } from "react";
 import { useTheme } from "next-themes";
 
@@ -17,21 +17,22 @@ export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
-  themeToggler,
+  themeToggler
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   desktopClassName?: string;
   mobileClassName?: string;
-  themeToggler: React.ReactNode;
+  themeToggler:React.ReactNode;
 }) => {
   return (
-    <FloatingDockDesktop
-      items={items}
-      className={cn("w-max p-4 rounded-full border z-50 pointer-events-auto relative mx-auto flex min-h-full h-full items-center px-6 bg-background overflow-hidden", desktopClassName)}
-      themeToggler={themeToggler}
-    />
+    <>
+      <FloatingDockDesktop items={items} themeToggler={themeToggler}
+      className={cn("w-max p-4 rounded-full border z-50 pointer-events-auto relative mx-auto flex min-h-full md:h-15 px-6 bg-background", desktopClassName)}
+      />
+    </>
   );
 };
+
 
 const FloatingDockDesktop = ({
   items,
@@ -40,10 +41,10 @@ const FloatingDockDesktop = ({
 }: {
   items: { title: string; icon: React.ReactNode; href: string }[];
   className?: string;
-  themeToggler: React.ReactNode;
+  themeToggler:React.ReactNode;
 }) => {
   let mouseX = useMotionValue(Infinity);
-  const { theme, setTheme } = useTheme();
+  const {theme,setTheme}=useTheme();
 
   const handleThemeToggle = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -54,26 +55,18 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "flex h-16 gap-4 items-end rounded-2xl px-4 pb-3",
+        "mx-auto hidden md:flex h-16 gap-4 items-end rounded-2xl bg-gray-50 dark:bg-neutral-900 px-4 pb-3",
         className
       )}
-      style={{ overflow: 'hidden' }} // Prevent overflow
     >
-      {/* Render icons */}
       {items.map((item) => (
-        <IconContainer
-          mouseX={mouseX}
-          key={item.title}
-          {...item}
-        />
+        <IconContainer mouseX={mouseX} key={item.title} {...item} />
       ))}
-
-      {/* Render theme toggler with hover effect */}
       <IconContainer
         mouseX={mouseX}
         title="Toggle Theme"
-        icon={themeToggler}
-        href="#" // href is not used here; handled with onClick
+        icon={themeToggler}  
+        href='#'
         onClick={handleThemeToggle}
       />
     </motion.div>
@@ -85,7 +78,7 @@ function IconContainer({
   title,
   icon,
   href,
-  onClick,
+  onClick
 }: {
   mouseX: MotionValue;
   title: string;
@@ -97,14 +90,19 @@ function IconContainer({
 
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+
     return val - bounds.x - bounds.width / 2;
   });
 
-  let widthTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]); // Adjusted bounds
-  let heightTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]); // Adjusted bounds
+  let widthTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]);
+  let heightTransform = useTransform(distance, [-150, 0, 150], [32, 60, 32]);
 
-  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [16, 30, 16]); // Adjusted bounds
-  let heightTransformIcon = useTransform(distance, [-150, 0, 150], [16, 30, 16]); // Adjusted bounds
+  let widthTransformIcon = useTransform(distance, [-150, 0, 150], [16, 30, 16]);
+  let heightTransformIcon = useTransform(
+    distance,
+    [-150, 0, 150],
+    [16, 30, 16]
+  );
 
   let width = useSpring(widthTransform, {
     mass: 0.1,
@@ -131,19 +129,19 @@ function IconContainer({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link
+    <Link 
       href={href}
       onClick={onClick}
-      target={onClick ? "_self" : "_blank"} // Open link in the same tab if onClick is provided
+      target={onClick ? "_self" : "_blank"}
       rel="noopener noreferrer"
-      style={{ textDecoration: 'none' }} // Optional: remove underline from links
-    >
+      style={{ textDecoration: 'none' }}
+      >
       <motion.div
         ref={ref}
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative overflow-hidden"
+        className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center relative"
       >
         <AnimatePresence>
           {hovered && (

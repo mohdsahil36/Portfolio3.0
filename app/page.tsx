@@ -15,7 +15,7 @@ export default function Home() {
       </main>
       <footer className="w-full fixed bottom-4 lg:bottom-8 flex items-center justify-center inset-x-0">
         <div className="flex justify-center">
-          <FloatingDock items={Data.icons} themeToggler={<ModeToggle />} />
+          <FloatingDock items={Data.icons} themeToggler={<ModeToggle/>}/>
         </div>
       </footer>
     </div>
