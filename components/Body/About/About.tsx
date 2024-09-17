@@ -10,7 +10,7 @@ const About: React.FC<AboutMeProps>=({about})=>{
             <div className='text-lg md:text-xl font-semibold'>
                 <p>About</p>
             </div>
-            <div className='mt-2 text-sm md:text-sm text-neutral-400'>
+            <div className='mt-2 text-sm md:text-sm text-slate-900 dark:text-slate-50'>
                 <p>{about}</p>
             </div>
         </section>

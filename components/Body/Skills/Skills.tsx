@@ -14,7 +14,7 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
                 {skills.map((skill, id) => (
                     <div 
                     key={id} 
-                    className='border md:border-2 border-solid border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-2xl text-xs md:text-sm px-2.5 py-1 hover:shadow-md dark:hover:shadow-md dark:hover:shadow-gray-500 transition-shadow duration-200 ease-in-out'
+                    className='border md:border-2 border-solid border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-2xl text-xs md:text-sm px-2.5 py-1 hover:shadow-md dark:hover:shadow-md dark:hover:shadow-gray-800 transition-shadow duration-200 ease-in-out font-medium'
                   >
                     {skill}
                   </div>                                                                    

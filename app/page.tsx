@@ -6,7 +6,7 @@ import { Data } from "./data/Data";
 
 export default function Home() {
   return (
-    <div className="max-w-2xl min-h-[100vh] mx-auto p-6">
+    <div className="max-w-[41rem] min-h-[100vh] mx-auto p-6">
       <header>
         <Navbar />
       </header>

@@ -16,6 +16,15 @@ interface UserData {
   intro: string;
   about: string;
   skills: string[];
+  experience: {
+    company:string;
+    href:string;
+    location:string;
+    start:string;
+    end:string;
+    designation:string;
+    icon:string;
+  }[];
   icons: {
     title: string;
     icon: React.ReactNode;
@@ -54,6 +63,26 @@ export const Data: UserData = {
     "BITBUCKET",
     "VSCODE",
     "SFCC BUSINESS MANAGER"
+  ],
+  experience:[
+    {
+      company:"Merkle",
+      href:"https://www.merkle.com/",
+      location:"Bengaluru",
+      start:"July 2022",
+      end:"Feb 2024",
+      designation:"Associate Frontend Developer",
+      icon:'https://media.licdn.com/dms/image/v2/D4E0BAQEaxbR_UZGnTA/company-logo_200_200/company-logo_200_200/0/1688549122360/merkle_dach_logo?e=2147483647&v=beta&t=QABIMp5xRdKXOiNA9eoKJSBn4pTicNols6HKPvILdVA'
+    },
+    {
+      company:"HighRadius Technologies Pvt Ltd",
+      href:"https://www.highradius.com/about/company-overview/",
+      location:"Remote (Bhubaneshwar)",
+      start:"Aug 2021",
+      end:"May 2022",
+      designation:"UI Automation Intern",
+      icon:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf3aPvCVNmhUUd_8C1qkDnKHokZnfo0JlUmw&s'
+    }
   ],
   // Icons data
   icons: [
