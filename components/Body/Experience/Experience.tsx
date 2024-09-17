@@ -21,18 +21,7 @@ const Experience: React.FC<ExperienceProps> = ({ experience }) => {
                 <p>Experience</p>
             </div>
             {experience.map((item)=>(
-                <div className='flex items-center justify-between py-4 text-xs text-neutral-300'>
-                    <div className='flex items-center'>
-                        <img src={item.icon} alt="React Image" className='h-12 rounded-full' />
-                        <div className='ms-3'>
-                            <p>{item.company}</p>
-                            <p className='mt-1'>{item.designation}</p>
-                        </div>
-                    </div>
-                    <div className='text-end'>
-                        <span>{item.start}</span> - <span>{item.end}</span>
-                    </div>
-                </div>
+                <></>
             ))}
         </section>
     );
